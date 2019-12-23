@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const AddGoal = () => {
+const AddGoal = props => {
+    const [EnteredText, setEnteredText] = useState('');
+    
+    const AddGoalHandler = event => {
+    event.preventDefault();
+    setEnteredText('');
+    const newgoal = [{
+        id: Math.random().toString(),
+        text: EnteredText
+    }];
+    props.newGoalHandler(newgoal);
+    };
+    const EnteredTextHandler = event => {
+        setEnteredText(event.target.value);
+    };
     return (
         <div>
-            <form>
-                <input type = 'text'/>
+            <form onSubmit = {AddGoalHandler}>
+                <input type = 'text' value = {EnteredText} onChange = {EnteredTextHandler}/>
                 <button type = 'submit'> Add a new Goal </button>
             </form>
 
