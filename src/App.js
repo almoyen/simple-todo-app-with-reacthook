@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import GoalList from './components/GoalList';
+import AddGoal from './components/AddGoal';
 
-function App() {
+const App = () => {
+  const currentGoals = [ {
+    id: Math.random().toString(),
+    text: ''
+  }];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1> Add a Goal</h1>
+      <AddGoal/>
+      <h2>Current Goals</h2>
+      <GoalList showgoals = {currentGoals} />
     </div>
   );
 }
